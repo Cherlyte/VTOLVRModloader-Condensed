@@ -16,5 +16,5 @@ It's recommended you use a IDE such as Visual Studio 2022 to build the ModLoader
 ## Credits.
 Of course, good things are hardly made by only one person, which is why we have to remind ourselves of the people who worked on it.<br>
 
-[The Original Modloader Team @ GitLab](https://gitlab.com/vtolvr-mods/ModLoader#contributors)
+[The Original Modloader Team @ GitLab](https://gitlab.com/vtolvr-mods/ModLoader#contributors)<br>
 Cherlyte - For "Condensing" the ModLoader
