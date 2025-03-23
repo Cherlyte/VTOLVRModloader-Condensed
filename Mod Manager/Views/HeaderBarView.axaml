@@ -1,0 +1,141 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Mod_Manager.ViewModels"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             mc:Ignorable="d" 
+             d:DesignWidth="620" 
+             d:DesignHeight="80"
+             x:Class="Mod_Manager.Views.HeaderBarView">
+    
+    <Design.DataContext>
+        <viewModels:HeaderBarViewModel/>
+    </Design.DataContext>
+    
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/CommonStyles.axaml"/>
+    </UserControl.Styles>
+    
+    <StackPanel
+        Background="{StaticResource 'Vtolml Dark'}">
+        <Menu
+            VerticalAlignment="Top">
+            <MenuItem Header="Settings">
+                <MenuItem Header="VR Mode">
+                    <MenuItem
+                        Header="SteamVR"
+                        Command="{Binding UseSteamVRCommand}">
+                        <MenuItem.Icon>
+                            <CheckBox BorderThickness="0"
+                                      IsHitTestVisible="False"
+                                      IsChecked="{Binding UseSteamVR}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem 
+                        Header="Oculus"
+                        Command="{Binding UseOculusCommand}">
+                        <MenuItem.Icon>
+                            <CheckBox BorderThickness="0"
+                                      IsHitTestVisible="False"
+                                      IsChecked="{Binding UseOculus}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        Header="OpenXR"
+                        Command="{Binding UseOpenXRCommand}">
+                        <MenuItem.Icon>
+                            <CheckBox BorderThickness="0"
+                                      IsHitTestVisible="False"
+                                      IsChecked="{Binding UseOpenXR}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+				<MenuItem Header="ModLoader">
+					<MenuItem Header="Enable by Default" Command="{Binding DoorstopEnablerCommand}">
+						<MenuItem.Icon>
+							<CheckBox BorderThickness="0"
+                                      IsHitTestVisible="False"
+                                      IsChecked="{Binding DoorstopEnabled}"/>
+						</MenuItem.Icon>
+					</MenuItem>
+				</MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem 
+                    Header="Collect Logs"
+                    Command="{Binding CollectLogsCommand}"
+                    ToolTip.Tip="Create a ZIP of your log files for debugging issues"
+                    ToolTip.ShowDelay="0">
+                    <MenuItem.Icon>
+                        <materialIcons:MaterialIcon 
+                            Kind="FolderZip"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem 
+                    Header="Documentation"
+                    Command="{Binding HelpCommand}"
+                    ToolTip.Tip="Visit VTOL VR Mod Loader's Documentation"
+                    ToolTip.ShowDelay="0"
+                    HotKey="F1">
+                        <MenuItem.Icon>
+                            <materialIcons:MaterialIcon
+                                Kind="QuestionMark"/>
+                        </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem 
+                    Header="Open Mods Folder"
+                    Command="{Binding OpenModsFolderCommand}"
+                    ToolTip.Tip="Opens the folder where your mods are stored."
+                    ToolTip.ShowDelay="0">
+                    <MenuItem.Icon>
+                        <materialIcons:MaterialIcon
+                            Kind="Folder"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <Grid
+            ColumnDefinitions="50,*,50,*,50">
+            
+            <Button
+                Grid.Column="1"
+                Classes="bt-rounded-10 bg-transparent bt-standard mo-vtolml-light"
+                Command="{Binding RefreshCommand}"
+                ToolTip.Tip="Refresh list of mods"
+                ToolTip.ShowDelay="0"
+                HotKey="F5">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    <materialIcons:MaterialIcon
+                        Kind="Refresh"/>
+                    
+                    <TextBlock
+                        Text="Refresh"/>
+                </StackPanel>
+            </Button>
+            
+            <Button
+                Grid.Column="3"
+                Classes="bt-rounded-10 bt-standard bg-success mo-success-dark"
+                Command="{Binding LaunchCommand}"
+                IsEnabled="{Binding CanLaunchGame}"
+                ToolTip.Tip="Launch VTOL VR Modded!"
+                ToolTip.ShowDelay="0">
+                
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    
+                    <materialIcons:MaterialIcon
+                        Kind="Play"/>
+                    
+                    <TextBlock
+                        Text="{Binding ToggleButtonText}"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </StackPanel>
+</UserControl>

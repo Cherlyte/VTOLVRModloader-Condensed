@@ -1,0 +1,81 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Mod_Manager.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignWidth="620" 
+             d:DesignHeight="854"
+             Width="620"
+             Height="854"
+             x:Class="Mod_Manager.Views.PopUpView"
+             x:DataType="viewModels:PopUpViewModel"
+             Focusable="True">
+    
+    <Design.DataContext>
+        <viewModels:PopUpViewModel/>
+    </Design.DataContext>
+    
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/CommonStyles.axaml"/>
+    </UserControl.Styles>
+    
+    
+    <Grid
+        RowDefinitions="* auto 80 40 *"
+        ColumnDefinitions="* 3* 3* *"
+        IsVisible="{Binding Visible}">
+        
+        <Rectangle
+            Grid.Row="0"
+            Grid.RowSpan="99"
+            Grid.Column="0"
+            Grid.ColumnSpan="99"
+            Fill="#000000"
+            Opacity="75"/>
+        
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Text="{Binding Title}"
+            TextAlignment="Center"
+            Background="{StaticResource 'Vtolml Dark'}"
+            Classes="h1"/>
+        
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Text="{Binding Message}"
+            TextAlignment="Center"
+            Background="{StaticResource 'Vtolml Light'}"/>
+        
+        <Rectangle
+            Grid.Row="3"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Fill="{StaticResource 'Vtolml Light'}"/>
+        
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Content="{Binding LeftButtonText}"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
+            Margin="10,0"
+            Command="{Binding LeftButtonCommand}"
+            IsVisible="{Binding LeftButtonVisible}"/>
+        
+        
+        <Button
+            Grid.Row="3"
+            Grid.Column="2"
+            Content="{Binding RightButtonText}"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
+            Margin="10,0"
+            Command="{Binding RightButtonCommand}"
+            IsVisible="{Binding RightButtonVisible}"/>
+    </Grid>
+</UserControl>

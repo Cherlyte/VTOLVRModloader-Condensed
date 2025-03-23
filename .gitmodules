@@ -1,0 +1,12 @@
+[submodule "JsonSubTypes"]
+	path = JsonSubTypes
+	url = https://gitlab.com/vtolvr-mods/JsonSubTypes.git
+[submodule "facepunch.steamworks.abstractions"]
+	path = facepunch.steamworks.abstractions
+	url = https://gitlab.com/ben-w/facepunch.steamworks.abstractions.git
+[submodule "UniTask"]
+	path = UniTask
+	url = https://github.com/Cysharp/UniTask.git
+[submodule "Tomlet"]
+	path = Tomlet
+	url = https://github.com/SamboyCoding/Tomlet.git

@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{404B081E-3CBC-477C-B200-0AAA4B618298}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>ModLoader.Framework</RootNamespace>
+        <AssemblyName>ModLoader.Framework</AssemblyName>
+        <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="0Harmony">
+          <HintPath>..\dll\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Xml"/>
+        <Reference Include="UnityEngine.CoreModule">
+          <HintPath>..\dll\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="..\Tomlet\Tomlet\Attributes\ExcludeFromCodeCoverageAttribute.cs">
+          <Link>Tomlet\Attributes\ExcludeFromCodeCoverageAttribute.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Attributes\TomlDoNotInlineObjectAttribute.cs">
+          <Link>Tomlet\Attributes\TomlDoNotInlineObjectAttribute.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Attributes\TomlInlineCommentAttribute.cs">
+          <Link>Tomlet\Attributes\TomlInlineCommentAttribute.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Attributes\TomlNonSerializedAttribute.cs">
+          <Link>Tomlet\Attributes\TomlNonSerializedAttribute.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Attributes\TomlPrecedingCommentAttribute.cs">
+          <Link>Tomlet\Attributes\TomlPrecedingCommentAttribute.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Attributes\TomlPropertyAttribute.cs">
+          <Link>Tomlet\Attributes\TomlPropertyAttribute.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\InvalidTomlDateTimeException.cs">
+          <Link>Tomlet\Exceptions\InvalidTomlDateTimeException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\InvalidTomlEscapeException.cs">
+          <Link>Tomlet\Exceptions\InvalidTomlEscapeException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\InvalidTomlInlineTableException.cs">
+          <Link>Tomlet\Exceptions\InvalidTomlInlineTableException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\InvalidTomlKeyException.cs">
+          <Link>Tomlet\Exceptions\InvalidTomlKeyException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\InvalidTomlNumberException.cs">
+          <Link>Tomlet\Exceptions\InvalidTomlNumberException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\MissingIntermediateInTomlTableArraySpecException.cs">
+          <Link>Tomlet\Exceptions\MissingIntermediateInTomlTableArraySpecException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\NewLineInTomlInlineTableException.cs">
+          <Link>Tomlet\Exceptions\NewLineInTomlInlineTableException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\NoTomlKeyException.cs">
+          <Link>Tomlet\Exceptions\NoTomlKeyException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TimeOffsetOnTomlDateOrTimeException.cs">
+          <Link>Tomlet\Exceptions\TimeOffsetOnTomlDateOrTimeException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlArraySyntaxException.cs">
+          <Link>Tomlet\Exceptions\TomlArraySyntaxException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlContainsDottedKeyNonTableException.cs">
+          <Link>Tomlet\Exceptions\TomlContainsDottedKeyNonTableException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlDateTimeMissingSeparatorException.cs">
+          <Link>Tomlet\Exceptions\TomlDateTimeMissingSeparatorException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlDateTimeUnnecessarySeparatorException.cs">
+          <Link>Tomlet\Exceptions\TomlDateTimeUnnecessarySeparatorException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlDottedKeyException.cs">
+          <Link>Tomlet\Exceptions\TomlDottedKeyException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlDottedKeyParserException.cs">
+          <Link>Tomlet\Exceptions\TomlDottedKeyParserException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlDoubleDottedKeyException.cs">
+          <Link>Tomlet\Exceptions\TomlDoubleDottedKeyException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlEndOfFileException.cs">
+          <Link>Tomlet\Exceptions\TomlEndOfFileException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlEnumParseException.cs">
+          <Link>Tomlet\Exceptions\TomlEnumParseException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlException.cs">
+          <Link>Tomlet\Exceptions\TomlException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlExceptionWithLine.cs">
+          <Link>Tomlet\Exceptions\TomlExceptionWithLine.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlFieldTypeMismatchException.cs">
+          <Link>Tomlet\Exceptions\TomlFieldTypeMismatchException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlInlineTableSeparatorException.cs">
+          <Link>Tomlet\Exceptions\TomlInlineTableSeparatorException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlInstantiationException.cs">
+          <Link>Tomlet\Exceptions\TomlInstantiationException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlInternalException.cs">
+          <Link>Tomlet\Exceptions\TomlInternalException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlInvalidValueException.cs">
+          <Link>Tomlet\Exceptions\TomlInvalidValueException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlKeyRedefinitionException.cs">
+          <Link>Tomlet\Exceptions\TomlKeyRedefinitionException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlMissingEqualsException.cs">
+          <Link>Tomlet\Exceptions\TomlMissingEqualsException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlMissingNewlineException.cs">
+          <Link>Tomlet\Exceptions\TomlMissingNewlineException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlNewlineInInlineCommentException.cs">
+          <Link>Tomlet\Exceptions\TomlNewlineInInlineCommentException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlNonTableArrayUsedAsTableArrayException.cs">
+          <Link>Tomlet\Exceptions\TomlNonTableArrayUsedAsTableArrayException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlNoSuchValueException.cs">
+          <Link>Tomlet\Exceptions\TomlNoSuchValueException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlParameterTypeMismatchException.cs">
+          <Link>Tomlet\Exceptions\TomlParameterTypeMismatchException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlPrimitiveToDocumentException.cs">
+          <Link>Tomlet\Exceptions\TomlPrimitiveToDocumentException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlPropertyTypeMismatchException.cs">
+          <Link>Tomlet\Exceptions\TomlPropertyTypeMismatchException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlStringException.cs">
+          <Link>Tomlet\Exceptions\TomlStringException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlTableArrayAlreadyExistsAsNonArrayException.cs">
+          <Link>Tomlet\Exceptions\TomlTableArrayAlreadyExistsAsNonArrayException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlTableLockedException.cs">
+          <Link>Tomlet\Exceptions\TomlTableLockedException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlTableRedefinitionException.cs">
+          <Link>Tomlet\Exceptions\TomlTableRedefinitionException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlTripleQuotedKeyException.cs">
+          <Link>Tomlet\Exceptions\TomlTripleQuotedKeyException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlTypeMismatchException.cs">
+          <Link>Tomlet\Exceptions\TomlTypeMismatchException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlUnescapedUnicodeControlCharException.cs">
+          <Link>Tomlet\Exceptions\TomlUnescapedUnicodeControlCharException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TomlWhitespaceInKeyException.cs">
+          <Link>Tomlet\Exceptions\TomlWhitespaceInKeyException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TripleQuoteInTomlMultilineLiteralException.cs">
+          <Link>Tomlet\Exceptions\TripleQuoteInTomlMultilineLiteralException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\TripleQuoteInTomlMultilineSimpleStringException.cs">
+          <Link>Tomlet\Exceptions\TripleQuoteInTomlMultilineSimpleStringException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\UnterminatedTomlKeyException.cs">
+          <Link>Tomlet\Exceptions\UnterminatedTomlKeyException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\UnterminatedTomlStringException.cs">
+          <Link>Tomlet\Exceptions\UnterminatedTomlStringException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\UnterminatedTomlTableArrayException.cs">
+          <Link>Tomlet\Exceptions\UnterminatedTomlTableArrayException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Exceptions\UnterminatedTomlTableNameException.cs">
+          <Link>Tomlet\Exceptions\UnterminatedTomlTableNameException.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Extensions\GenericExtensions.cs">
+          <Link>Tomlet\Extensions\GenericExtensions.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Extensions\ReflectionExtensions.cs">
+          <Link>Tomlet\Extensions\ReflectionExtensions.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Extensions\StringExtensions.cs">
+          <Link>Tomlet\Extensions\StringExtensions.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlArray.cs">
+          <Link>Tomlet\Models\TomlArray.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlBoolean.cs">
+          <Link>Tomlet\Models\TomlBoolean.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlCommentData.cs">
+          <Link>Tomlet\Models\TomlCommentData.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlDocument.cs">
+          <Link>Tomlet\Models\TomlDocument.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlDouble.cs">
+          <Link>Tomlet\Models\TomlDouble.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlLocalDate.cs">
+          <Link>Tomlet\Models\TomlLocalDate.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlLocalDateTime.cs">
+          <Link>Tomlet\Models\TomlLocalDateTime.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlLocalTime.cs">
+          <Link>Tomlet\Models\TomlLocalTime.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlLong.cs">
+          <Link>Tomlet\Models\TomlLong.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlOffsetDateTime.cs">
+          <Link>Tomlet\Models\TomlOffsetDateTime.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlString.cs">
+          <Link>Tomlet\Models\TomlString.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlTable.cs">
+          <Link>Tomlet\Models\TomlTable.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlValue.cs">
+          <Link>Tomlet\Models\TomlValue.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\Models\TomlValueWithDateTime.cs">
+          <Link>Tomlet\Models\TomlValueWithDateTime.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlCompositeDeserializer.cs">
+          <Link>Tomlet\TomlCompositeDeserializer.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlCompositeSerializer.cs">
+          <Link>Tomlet\TomlCompositeSerializer.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlDateTimeUtils.cs">
+          <Link>Tomlet\TomlDateTimeUtils.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomletMain.cs">
+          <Link>Tomlet\TomletMain.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomletStringReader.cs">
+          <Link>Tomlet\TomletStringReader.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlKeyUtils.cs">
+          <Link>Tomlet\TomlKeyUtils.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlNumberStyle.cs">
+          <Link>Tomlet\TomlNumberStyle.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlNumberUtils.cs">
+          <Link>Tomlet\TomlNumberUtils.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlParser.cs">
+          <Link>Tomlet\TomlParser.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlSerializationMethods.cs">
+          <Link>Tomlet\TomlSerializationMethods.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlSerializerOptions.cs">
+          <Link>Tomlet\TomlSerializerOptions.cs</Link>
+        </Compile>
+        <Compile Include="..\Tomlet\Tomlet\TomlUtils.cs">
+          <Link>Tomlet\TomlUtils.cs</Link>
+        </Compile>
+        <Compile Include="Attributes\ItemId.cs" />
+        <Compile Include="DLC\RequiredDLC.cs" />
+        <Compile Include="DLC\VTOLVRDLC.cs" />
+        <Compile Include="Exceptions\ItemIdMissingException.cs" />
+        <Compile Include="Settings\BaseSettings.cs" />
+        <Compile Include="VtolMod.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="..\Tomlet\Tomlet\Tomlet.csproj">
+        <Link>Tomlet\Tomlet.csproj</Link>
+      </Content>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>

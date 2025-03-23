@@ -1,0 +1,19 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        
+        <Design.PreviewWith>
+                <StackPanel Margin="20" Spacing="20">
+                        <Button 
+                                Classes="hidden"
+                                Content="Hidden Background Button"/>
+                </StackPanel>
+        </Design.PreviewWith>
+        
+        <Style Selector="Button.hidden">
+                <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        
+        <Style Selector="Button.hidden:pointerover /template/ ContentPresenter">
+                <Setter Property="Background" Value="Transparent"/>
+        </Style>
+</Styles>

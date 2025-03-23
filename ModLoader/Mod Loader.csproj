@@ -1,0 +1,1101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>12</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE;UNITY_2020_2_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2017_2_OR_NEWER;</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="HarmonyX" Version="2.13.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Serilog" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="SimpleTCP" Version="1.0.24" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mod Loader.Framework\Mod Loader.Framework.csproj" />
+    <ProjectReference Include="..\SteamQueries.Models\SteamQueries.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp" Publicize="true">
+      <HintPath>..\dll\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\dll\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\dll\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\dll\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\dll\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\dll\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>..\dll\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\dll\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\dll\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreModule">
+      <HintPath>..\dll\UnityEngine.TextCoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\dll\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\dll\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>..\dll\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>..\dll\Valve.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\AsyncLazy.cs">
+      <Link>UniTask\Runtime\AsyncLazy.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\AsyncReactiveProperty.cs">
+      <Link>UniTask\Runtime\AsyncReactiveProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\AsyncUnit.cs">
+      <Link>UniTask\Runtime\AsyncUnit.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CancellationTokenEqualityComparer.cs">
+      <Link>UniTask\Runtime\CancellationTokenEqualityComparer.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CancellationTokenExtensions.cs">
+      <Link>UniTask\Runtime\CancellationTokenExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CancellationTokenSourceExtensions.cs">
+      <Link>UniTask\Runtime\CancellationTokenSourceExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Channel.cs">
+      <Link>UniTask\Runtime\Channel.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CompilerServices\AsyncMethodBuilderAttribute.cs">
+      <Link>UniTask\Runtime\CompilerServices\AsyncMethodBuilderAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CompilerServices\AsyncUniTaskMethodBuilder.cs">
+      <Link>UniTask\Runtime\CompilerServices\AsyncUniTaskMethodBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CompilerServices\AsyncUniTaskVoidMethodBuilder.cs">
+      <Link>UniTask\Runtime\CompilerServices\AsyncUniTaskVoidMethodBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CompilerServices\StateMachineRunner.cs">
+      <Link>UniTask\Runtime\CompilerServices\StateMachineRunner.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\EnumerableAsyncExtensions.cs">
+      <Link>UniTask\Runtime\EnumerableAsyncExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\EnumeratorAsyncExtensions.cs">
+      <Link>UniTask\Runtime\EnumeratorAsyncExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\ExceptionExtensions.cs">
+      <Link>UniTask\Runtime\ExceptionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\Addressables\AddressablesAsyncExtensions.cs">
+      <Link>UniTask\Runtime\External\Addressables\AddressablesAsyncExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\DOTween\DOTweenAsyncExtensions.cs">
+      <Link>UniTask\Runtime\External\DOTween\DOTweenAsyncExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.cs">
+      <Link>UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.cs">
+      <Link>UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ArrayPool.cs">
+      <Link>UniTask\Runtime\Internal\ArrayPool.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ArrayPoolUtil.cs">
+      <Link>UniTask\Runtime\Internal\ArrayPoolUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ArrayUtil.cs">
+      <Link>UniTask\Runtime\Internal\ArrayUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ContinuationQueue.cs">
+      <Link>UniTask\Runtime\Internal\ContinuationQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\DiagnosticsExtensions.cs">
+      <Link>UniTask\Runtime\Internal\DiagnosticsExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\Error.cs">
+      <Link>UniTask\Runtime\Internal\Error.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\MinimumQueue.cs">
+      <Link>UniTask\Runtime\Internal\MinimumQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\PlayerLoopRunner.cs">
+      <Link>UniTask\Runtime\Internal\PlayerLoopRunner.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\PooledDelegate.cs">
+      <Link>UniTask\Runtime\Internal\PooledDelegate.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\RuntimeHelpersAbstraction.cs">
+      <Link>UniTask\Runtime\Internal\RuntimeHelpersAbstraction.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\StatePool.cs">
+      <Link>UniTask\Runtime\Internal\StatePool.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\TaskTracker.cs">
+      <Link>UniTask\Runtime\Internal\TaskTracker.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\UnityEqualityComparer.cs">
+      <Link>UniTask\Runtime\Internal\UnityEqualityComparer.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\UnityWebRequestExtensions.cs">
+      <Link>UniTask\Runtime\Internal\UnityWebRequestExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ValueStopwatch.cs">
+      <Link>UniTask\Runtime\Internal\ValueStopwatch.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\WeakDictionary.cs">
+      <Link>UniTask\Runtime\Internal\WeakDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\IUniTaskAsyncEnumerable.cs">
+      <Link>UniTask\Runtime\IUniTaskAsyncEnumerable.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\IUniTaskSource.cs">
+      <Link>UniTask\Runtime\IUniTaskSource.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Aggregate.cs">
+      <Link>UniTask\Runtime\Linq\Aggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\All.cs">
+      <Link>UniTask\Runtime\Linq\All.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Any.cs">
+      <Link>UniTask\Runtime\Linq\Any.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\AppendPrepend.cs">
+      <Link>UniTask\Runtime\Linq\AppendPrepend.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\AsUniTaskAsyncEnumerable.cs">
+      <Link>UniTask\Runtime\Linq\AsUniTaskAsyncEnumerable.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\AsyncEnumeratorBase.cs">
+      <Link>UniTask\Runtime\Linq\AsyncEnumeratorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Average.cs">
+      <Link>UniTask\Runtime\Linq\Average.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Buffer.cs">
+      <Link>UniTask\Runtime\Linq\Buffer.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Cast.cs">
+      <Link>UniTask\Runtime\Linq\Cast.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\CombineLatest.cs">
+      <Link>UniTask\Runtime\Linq\CombineLatest.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Concat.cs">
+      <Link>UniTask\Runtime\Linq\Concat.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Contains.cs">
+      <Link>UniTask\Runtime\Linq\Contains.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Count.cs">
+      <Link>UniTask\Runtime\Linq\Count.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Create.cs">
+      <Link>UniTask\Runtime\Linq\Create.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\DefaultIfEmpty.cs">
+      <Link>UniTask\Runtime\Linq\DefaultIfEmpty.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Distinct.cs">
+      <Link>UniTask\Runtime\Linq\Distinct.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\DistinctUntilChanged.cs">
+      <Link>UniTask\Runtime\Linq\DistinctUntilChanged.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Do.cs">
+      <Link>UniTask\Runtime\Linq\Do.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ElementAt.cs">
+      <Link>UniTask\Runtime\Linq\ElementAt.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Empty.cs">
+      <Link>UniTask\Runtime\Linq\Empty.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Except.cs">
+      <Link>UniTask\Runtime\Linq\Except.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\First.cs">
+      <Link>UniTask\Runtime\Linq\First.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ForEach.cs">
+      <Link>UniTask\Runtime\Linq\ForEach.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\GroupBy.cs">
+      <Link>UniTask\Runtime\Linq\GroupBy.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\GroupJoin.cs">
+      <Link>UniTask\Runtime\Linq\GroupJoin.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Intersect.cs">
+      <Link>UniTask\Runtime\Linq\Intersect.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Join.cs">
+      <Link>UniTask\Runtime\Linq\Join.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Last.cs">
+      <Link>UniTask\Runtime\Linq\Last.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\LongCount.cs">
+      <Link>UniTask\Runtime\Linq\LongCount.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Max.cs">
+      <Link>UniTask\Runtime\Linq\Max.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Merge.cs">
+      <Link>UniTask\Runtime\Linq\Merge.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Min.cs">
+      <Link>UniTask\Runtime\Linq\Min.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\MinMax.cs">
+      <Link>UniTask\Runtime\Linq\MinMax.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Never.cs">
+      <Link>UniTask\Runtime\Linq\Never.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\OfType.cs">
+      <Link>UniTask\Runtime\Linq\OfType.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\OrderBy.cs">
+      <Link>UniTask\Runtime\Linq\OrderBy.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Pairwise.cs">
+      <Link>UniTask\Runtime\Linq\Pairwise.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Publish.cs">
+      <Link>UniTask\Runtime\Linq\Publish.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Queue.cs">
+      <Link>UniTask\Runtime\Linq\Queue.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Range.cs">
+      <Link>UniTask\Runtime\Linq\Range.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Repeat.cs">
+      <Link>UniTask\Runtime\Linq\Repeat.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Return.cs">
+      <Link>UniTask\Runtime\Linq\Return.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Reverse.cs">
+      <Link>UniTask\Runtime\Linq\Reverse.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Select.cs">
+      <Link>UniTask\Runtime\Linq\Select.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SelectMany.cs">
+      <Link>UniTask\Runtime\Linq\SelectMany.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SequenceEqual.cs">
+      <Link>UniTask\Runtime\Linq\SequenceEqual.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Single.cs">
+      <Link>UniTask\Runtime\Linq\Single.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Skip.cs">
+      <Link>UniTask\Runtime\Linq\Skip.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SkipLast.cs">
+      <Link>UniTask\Runtime\Linq\SkipLast.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SkipUntil.cs">
+      <Link>UniTask\Runtime\Linq\SkipUntil.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SkipUntilCanceled.cs">
+      <Link>UniTask\Runtime\Linq\SkipUntilCanceled.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SkipWhile.cs">
+      <Link>UniTask\Runtime\Linq\SkipWhile.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Subscribe.cs">
+      <Link>UniTask\Runtime\Linq\Subscribe.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Sum.cs">
+      <Link>UniTask\Runtime\Linq\Sum.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Take.cs">
+      <Link>UniTask\Runtime\Linq\Take.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\TakeLast.cs">
+      <Link>UniTask\Runtime\Linq\TakeLast.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\TakeUntil.cs">
+      <Link>UniTask\Runtime\Linq\TakeUntil.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\TakeUntilCanceled.cs">
+      <Link>UniTask\Runtime\Linq\TakeUntilCanceled.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\TakeWhile.cs">
+      <Link>UniTask\Runtime\Linq\TakeWhile.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Throw.cs">
+      <Link>UniTask\Runtime\Linq\Throw.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToArray.cs">
+      <Link>UniTask\Runtime\Linq\ToArray.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToDictionary.cs">
+      <Link>UniTask\Runtime\Linq\ToDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToHashSet.cs">
+      <Link>UniTask\Runtime\Linq\ToHashSet.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToList.cs">
+      <Link>UniTask\Runtime\Linq\ToList.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToLookup.cs">
+      <Link>UniTask\Runtime\Linq\ToLookup.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToObservable.cs">
+      <Link>UniTask\Runtime\Linq\ToObservable.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToUniTaskAsyncEnumerable.cs">
+      <Link>UniTask\Runtime\Linq\ToUniTaskAsyncEnumerable.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Union.cs">
+      <Link>UniTask\Runtime\Linq\Union.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\UnityExtensions\EveryUpdate.cs">
+      <Link>UniTask\Runtime\Linq\UnityExtensions\EveryUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\UnityExtensions\EveryValueChanged.cs">
+      <Link>UniTask\Runtime\Linq\UnityExtensions\EveryValueChanged.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\UnityExtensions\Timer.cs">
+      <Link>UniTask\Runtime\Linq\UnityExtensions\Timer.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Where.cs">
+      <Link>UniTask\Runtime\Linq\Where.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Zip.cs">
+      <Link>UniTask\Runtime\Linq\Zip.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\MoveNextSource.cs">
+      <Link>UniTask\Runtime\MoveNextSource.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\PlayerLoopHelper.cs">
+      <Link>UniTask\Runtime\PlayerLoopHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\PlayerLoopTimer.cs">
+      <Link>UniTask\Runtime\PlayerLoopTimer.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Progress.cs">
+      <Link>UniTask\Runtime\Progress.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\TaskPool.cs">
+      <Link>UniTask\Runtime\TaskPool.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\TimeoutController.cs">
+      <Link>UniTask\Runtime\TimeoutController.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\TriggerEvent.cs">
+      <Link>UniTask\Runtime\TriggerEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncAwakeTrigger.cs">
+      <Link>UniTask\Runtime\Triggers\AsyncAwakeTrigger.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncDestroyTrigger.cs">
+      <Link>UniTask\Runtime\Triggers\AsyncDestroyTrigger.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncStartTrigger.cs">
+      <Link>UniTask\Runtime\Triggers\AsyncStartTrigger.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncTriggerBase.cs">
+      <Link>UniTask\Runtime\Triggers\AsyncTriggerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncTriggerExtensions.cs">
+      <Link>UniTask\Runtime\Triggers\AsyncTriggerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\MonoBehaviourMessagesTriggers.cs">
+      <Link>UniTask\Runtime\Triggers\MonoBehaviourMessagesTriggers.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.AsValueTask.cs">
+      <Link>UniTask\Runtime\UniTask.AsValueTask.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Bridge.cs">
+      <Link>UniTask\Runtime\UniTask.Bridge.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.cs">
+      <Link>UniTask\Runtime\UniTask.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Delay.cs">
+      <Link>UniTask\Runtime\UniTask.Delay.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Factory.cs">
+      <Link>UniTask\Runtime\UniTask.Factory.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Run.cs">
+      <Link>UniTask\Runtime\UniTask.Run.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Threading.cs">
+      <Link>UniTask\Runtime\UniTask.Threading.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WaitUntil.cs">
+      <Link>UniTask\Runtime\UniTask.WaitUntil.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAll.cs">
+      <Link>UniTask\Runtime\UniTask.WhenAll.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAll.Generated.cs">
+      <Link>UniTask\Runtime\UniTask.WhenAll.Generated.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAny.cs">
+      <Link>UniTask\Runtime\UniTask.WhenAny.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAny.Generated.cs">
+      <Link>UniTask\Runtime\UniTask.WhenAny.Generated.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskCompletionSource.cs">
+      <Link>UniTask\Runtime\UniTaskCompletionSource.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskExtensions.cs">
+      <Link>UniTask\Runtime\UniTaskExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskExtensions.Shorthand.cs">
+      <Link>UniTask\Runtime\UniTaskExtensions.Shorthand.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskObservableExtensions.cs">
+      <Link>UniTask\Runtime\UniTaskObservableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskScheduler.cs">
+      <Link>UniTask\Runtime\UniTaskScheduler.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskSynchronizationContext.cs">
+      <Link>UniTask\Runtime\UniTaskSynchronizationContext.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskVoid.cs">
+      <Link>UniTask\Runtime\UniTaskVoid.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.AssetBundleRequestAllAssets.cs">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.AssetBundleRequestAllAssets.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.AsyncGPUReadback.cs">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.AsyncGPUReadback.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.cs">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.Jobs.cs">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.Jobs.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.MonoBehaviour.cs">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.MonoBehaviour.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.uGUI.cs">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.uGUI.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAwaitableExtensions.cs">
+      <Link>UniTask\Runtime\UnityAwaitableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityBindingExtensions.cs">
+      <Link>UniTask\Runtime\UnityBindingExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityWebRequestException.cs">
+      <Link>UniTask\Runtime\UnityWebRequestException.cs</Link>
+    </Compile>
+    <Compile Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\_InternalVisibleTo.cs">
+      <Link>UniTask\Runtime\_InternalVisibleTo.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\AsyncLazy.cs.meta">
+      <Link>UniTask\Runtime\AsyncLazy.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\AsyncReactiveProperty.cs.meta">
+      <Link>UniTask\Runtime\AsyncReactiveProperty.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\AsyncUnit.cs.meta">
+      <Link>UniTask\Runtime\AsyncUnit.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CancellationTokenEqualityComparer.cs.meta">
+      <Link>UniTask\Runtime\CancellationTokenEqualityComparer.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CancellationTokenExtensions.cs.meta">
+      <Link>UniTask\Runtime\CancellationTokenExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CancellationTokenSourceExtensions.cs.meta">
+      <Link>UniTask\Runtime\CancellationTokenSourceExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Channel.cs.meta">
+      <Link>UniTask\Runtime\Channel.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CompilerServices.meta">
+      <Link>UniTask\Runtime\CompilerServices.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CompilerServices\AsyncMethodBuilderAttribute.cs.meta">
+      <Link>UniTask\Runtime\CompilerServices\AsyncMethodBuilderAttribute.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CompilerServices\AsyncUniTaskMethodBuilder.cs.meta">
+      <Link>UniTask\Runtime\CompilerServices\AsyncUniTaskMethodBuilder.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CompilerServices\AsyncUniTaskVoidMethodBuilder.cs.meta">
+      <Link>UniTask\Runtime\CompilerServices\AsyncUniTaskVoidMethodBuilder.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\CompilerServices\StateMachineRunner.cs.meta">
+      <Link>UniTask\Runtime\CompilerServices\StateMachineRunner.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\EnumerableAsyncExtensions.cs.meta">
+      <Link>UniTask\Runtime\EnumerableAsyncExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\EnumeratorAsyncExtensions.cs.meta">
+      <Link>UniTask\Runtime\EnumeratorAsyncExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\ExceptionExtensions.cs.meta">
+      <Link>UniTask\Runtime\ExceptionExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External.meta">
+      <Link>UniTask\Runtime\External.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\Addressables.meta">
+      <Link>UniTask\Runtime\External\Addressables.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\Addressables\AddressablesAsyncExtensions.cs.meta">
+      <Link>UniTask\Runtime\External\Addressables\AddressablesAsyncExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\Addressables\UniTask.Addressables.asmdef">
+      <Link>UniTask\Runtime\External\Addressables\UniTask.Addressables.asmdef</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\Addressables\UniTask.Addressables.asmdef.meta">
+      <Link>UniTask\Runtime\External\Addressables\UniTask.Addressables.asmdef.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\DOTween.meta">
+      <Link>UniTask\Runtime\External\DOTween.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\DOTween\DOTweenAsyncExtensions.cs.meta">
+      <Link>UniTask\Runtime\External\DOTween\DOTweenAsyncExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\DOTween\UniTask.DOTween.asmdef">
+      <Link>UniTask\Runtime\External\DOTween\UniTask.DOTween.asmdef</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\DOTween\UniTask.DOTween.asmdef.meta">
+      <Link>UniTask\Runtime\External\DOTween\UniTask.DOTween.asmdef.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\TextMeshPro.meta">
+      <Link>UniTask\Runtime\External\TextMeshPro.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.cs.meta">
+      <Link>UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.cs.meta">
+      <Link>UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.tt">
+      <Link>UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.tt.meta">
+      <Link>UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\TextMeshPro\UniTask.TextMeshPro.asmdef">
+      <Link>UniTask\Runtime\External\TextMeshPro\UniTask.TextMeshPro.asmdef</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\External\TextMeshPro\UniTask.TextMeshPro.asmdef.meta">
+      <Link>UniTask\Runtime\External\TextMeshPro\UniTask.TextMeshPro.asmdef.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal.meta">
+      <Link>UniTask\Runtime\Internal.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ArrayPool.cs.meta">
+      <Link>UniTask\Runtime\Internal\ArrayPool.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ArrayPoolUtil.cs.meta">
+      <Link>UniTask\Runtime\Internal\ArrayPoolUtil.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ArrayUtil.cs.meta">
+      <Link>UniTask\Runtime\Internal\ArrayUtil.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ContinuationQueue.cs.meta">
+      <Link>UniTask\Runtime\Internal\ContinuationQueue.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\DiagnosticsExtensions.cs.meta">
+      <Link>UniTask\Runtime\Internal\DiagnosticsExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\Error.cs.meta">
+      <Link>UniTask\Runtime\Internal\Error.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\MinimumQueue.cs.meta">
+      <Link>UniTask\Runtime\Internal\MinimumQueue.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\PlayerLoopRunner.cs.meta">
+      <Link>UniTask\Runtime\Internal\PlayerLoopRunner.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\PooledDelegate.cs.meta">
+      <Link>UniTask\Runtime\Internal\PooledDelegate.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\RuntimeHelpersAbstraction.cs.meta">
+      <Link>UniTask\Runtime\Internal\RuntimeHelpersAbstraction.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\StatePool.cs.meta">
+      <Link>UniTask\Runtime\Internal\StatePool.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\TaskTracker.cs.meta">
+      <Link>UniTask\Runtime\Internal\TaskTracker.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\UnityEqualityComparer.cs.meta">
+      <Link>UniTask\Runtime\Internal\UnityEqualityComparer.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\UnityWebRequestExtensions.cs.meta">
+      <Link>UniTask\Runtime\Internal\UnityWebRequestExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\ValueStopwatch.cs.meta">
+      <Link>UniTask\Runtime\Internal\ValueStopwatch.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Internal\WeakDictionary.cs.meta">
+      <Link>UniTask\Runtime\Internal\WeakDictionary.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\IUniTaskAsyncEnumerable.cs.meta">
+      <Link>UniTask\Runtime\IUniTaskAsyncEnumerable.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\IUniTaskSource.cs.meta">
+      <Link>UniTask\Runtime\IUniTaskSource.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq.meta">
+      <Link>UniTask\Runtime\Linq.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Aggregate.cs.meta">
+      <Link>UniTask\Runtime\Linq\Aggregate.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\All.cs.meta">
+      <Link>UniTask\Runtime\Linq\All.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Any.cs.meta">
+      <Link>UniTask\Runtime\Linq\Any.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\AppendPrepend.cs.meta">
+      <Link>UniTask\Runtime\Linq\AppendPrepend.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\AsUniTaskAsyncEnumerable.cs.meta">
+      <Link>UniTask\Runtime\Linq\AsUniTaskAsyncEnumerable.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\AsyncEnumeratorBase.cs.meta">
+      <Link>UniTask\Runtime\Linq\AsyncEnumeratorBase.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Average.cs.meta">
+      <Link>UniTask\Runtime\Linq\Average.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Average.tt">
+      <Link>UniTask\Runtime\Linq\Average.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Average.tt.meta">
+      <Link>UniTask\Runtime\Linq\Average.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Buffer.cs.meta">
+      <Link>UniTask\Runtime\Linq\Buffer.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Cast.cs.meta">
+      <Link>UniTask\Runtime\Linq\Cast.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\CombineLatest.cs.meta">
+      <Link>UniTask\Runtime\Linq\CombineLatest.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\CombineLatest.tt">
+      <Link>UniTask\Runtime\Linq\CombineLatest.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\CombineLatest.tt.meta">
+      <Link>UniTask\Runtime\Linq\CombineLatest.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Concat.cs.meta">
+      <Link>UniTask\Runtime\Linq\Concat.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Contains.cs.meta">
+      <Link>UniTask\Runtime\Linq\Contains.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Count.cs.meta">
+      <Link>UniTask\Runtime\Linq\Count.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Create.cs.meta">
+      <Link>UniTask\Runtime\Linq\Create.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\DefaultIfEmpty.cs.meta">
+      <Link>UniTask\Runtime\Linq\DefaultIfEmpty.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Distinct.cs.meta">
+      <Link>UniTask\Runtime\Linq\Distinct.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\DistinctUntilChanged.cs.meta">
+      <Link>UniTask\Runtime\Linq\DistinctUntilChanged.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Do.cs.meta">
+      <Link>UniTask\Runtime\Linq\Do.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ElementAt.cs.meta">
+      <Link>UniTask\Runtime\Linq\ElementAt.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Empty.cs.meta">
+      <Link>UniTask\Runtime\Linq\Empty.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Except.cs.meta">
+      <Link>UniTask\Runtime\Linq\Except.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\First.cs.meta">
+      <Link>UniTask\Runtime\Linq\First.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ForEach.cs.meta">
+      <Link>UniTask\Runtime\Linq\ForEach.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\GroupBy.cs.meta">
+      <Link>UniTask\Runtime\Linq\GroupBy.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\GroupJoin.cs.meta">
+      <Link>UniTask\Runtime\Linq\GroupJoin.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Intersect.cs.meta">
+      <Link>UniTask\Runtime\Linq\Intersect.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Join.cs.meta">
+      <Link>UniTask\Runtime\Linq\Join.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Last.cs.meta">
+      <Link>UniTask\Runtime\Linq\Last.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\LongCount.cs.meta">
+      <Link>UniTask\Runtime\Linq\LongCount.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Max.cs.meta">
+      <Link>UniTask\Runtime\Linq\Max.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Merge.cs.meta">
+      <Link>UniTask\Runtime\Linq\Merge.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Min.cs.meta">
+      <Link>UniTask\Runtime\Linq\Min.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\MinMax.cs.meta">
+      <Link>UniTask\Runtime\Linq\MinMax.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\MinMax.tt">
+      <Link>UniTask\Runtime\Linq\MinMax.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\MinMax.tt.meta">
+      <Link>UniTask\Runtime\Linq\MinMax.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Never.cs.meta">
+      <Link>UniTask\Runtime\Linq\Never.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\OfType.cs.meta">
+      <Link>UniTask\Runtime\Linq\OfType.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\OrderBy.cs.meta">
+      <Link>UniTask\Runtime\Linq\OrderBy.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Pairwise.cs.meta">
+      <Link>UniTask\Runtime\Linq\Pairwise.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Publish.cs.meta">
+      <Link>UniTask\Runtime\Linq\Publish.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Queue.cs.meta">
+      <Link>UniTask\Runtime\Linq\Queue.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Range.cs.meta">
+      <Link>UniTask\Runtime\Linq\Range.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Repeat.cs.meta">
+      <Link>UniTask\Runtime\Linq\Repeat.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Return.cs.meta">
+      <Link>UniTask\Runtime\Linq\Return.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Reverse.cs.meta">
+      <Link>UniTask\Runtime\Linq\Reverse.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Select.cs.meta">
+      <Link>UniTask\Runtime\Linq\Select.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SelectMany.cs.meta">
+      <Link>UniTask\Runtime\Linq\SelectMany.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SequenceEqual.cs.meta">
+      <Link>UniTask\Runtime\Linq\SequenceEqual.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Single.cs.meta">
+      <Link>UniTask\Runtime\Linq\Single.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Skip.cs.meta">
+      <Link>UniTask\Runtime\Linq\Skip.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SkipLast.cs.meta">
+      <Link>UniTask\Runtime\Linq\SkipLast.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SkipUntil.cs.meta">
+      <Link>UniTask\Runtime\Linq\SkipUntil.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SkipUntilCanceled.cs.meta">
+      <Link>UniTask\Runtime\Linq\SkipUntilCanceled.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\SkipWhile.cs.meta">
+      <Link>UniTask\Runtime\Linq\SkipWhile.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Subscribe.cs.meta">
+      <Link>UniTask\Runtime\Linq\Subscribe.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Sum.cs.meta">
+      <Link>UniTask\Runtime\Linq\Sum.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Sum.tt">
+      <Link>UniTask\Runtime\Linq\Sum.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Sum.tt.meta">
+      <Link>UniTask\Runtime\Linq\Sum.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Take.cs.meta">
+      <Link>UniTask\Runtime\Linq\Take.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\TakeLast.cs.meta">
+      <Link>UniTask\Runtime\Linq\TakeLast.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\TakeUntil.cs.meta">
+      <Link>UniTask\Runtime\Linq\TakeUntil.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\TakeUntilCanceled.cs.meta">
+      <Link>UniTask\Runtime\Linq\TakeUntilCanceled.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\TakeWhile.cs.meta">
+      <Link>UniTask\Runtime\Linq\TakeWhile.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Throw.cs.meta">
+      <Link>UniTask\Runtime\Linq\Throw.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToArray.cs.meta">
+      <Link>UniTask\Runtime\Linq\ToArray.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToDictionary.cs.meta">
+      <Link>UniTask\Runtime\Linq\ToDictionary.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToHashSet.cs.meta">
+      <Link>UniTask\Runtime\Linq\ToHashSet.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToList.cs.meta">
+      <Link>UniTask\Runtime\Linq\ToList.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToLookup.cs.meta">
+      <Link>UniTask\Runtime\Linq\ToLookup.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToObservable.cs.meta">
+      <Link>UniTask\Runtime\Linq\ToObservable.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\ToUniTaskAsyncEnumerable.cs.meta">
+      <Link>UniTask\Runtime\Linq\ToUniTaskAsyncEnumerable.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Union.cs.meta">
+      <Link>UniTask\Runtime\Linq\Union.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\UniTask.Linq.asmdef">
+      <Link>UniTask\Runtime\Linq\UniTask.Linq.asmdef</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\UniTask.Linq.asmdef.meta">
+      <Link>UniTask\Runtime\Linq\UniTask.Linq.asmdef.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\UnityExtensions.meta">
+      <Link>UniTask\Runtime\Linq\UnityExtensions.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\UnityExtensions\EveryUpdate.cs.meta">
+      <Link>UniTask\Runtime\Linq\UnityExtensions\EveryUpdate.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\UnityExtensions\EveryValueChanged.cs.meta">
+      <Link>UniTask\Runtime\Linq\UnityExtensions\EveryValueChanged.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\UnityExtensions\Timer.cs.meta">
+      <Link>UniTask\Runtime\Linq\UnityExtensions\Timer.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Where.cs.meta">
+      <Link>UniTask\Runtime\Linq\Where.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Linq\Zip.cs.meta">
+      <Link>UniTask\Runtime\Linq\Zip.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\MoveNextSource.cs.meta">
+      <Link>UniTask\Runtime\MoveNextSource.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\PlayerLoopHelper.cs.meta">
+      <Link>UniTask\Runtime\PlayerLoopHelper.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\PlayerLoopTimer.cs.meta">
+      <Link>UniTask\Runtime\PlayerLoopTimer.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Progress.cs.meta">
+      <Link>UniTask\Runtime\Progress.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\TaskPool.cs.meta">
+      <Link>UniTask\Runtime\TaskPool.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\TimeoutController.cs.meta">
+      <Link>UniTask\Runtime\TimeoutController.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\TriggerEvent.cs.meta">
+      <Link>UniTask\Runtime\TriggerEvent.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers.meta">
+      <Link>UniTask\Runtime\Triggers.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncAwakeTrigger.cs.meta">
+      <Link>UniTask\Runtime\Triggers\AsyncAwakeTrigger.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncDestroyTrigger.cs.meta">
+      <Link>UniTask\Runtime\Triggers\AsyncDestroyTrigger.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncStartTrigger.cs.meta">
+      <Link>UniTask\Runtime\Triggers\AsyncStartTrigger.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncTriggerBase.cs.meta">
+      <Link>UniTask\Runtime\Triggers\AsyncTriggerBase.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\AsyncTriggerExtensions.cs.meta">
+      <Link>UniTask\Runtime\Triggers\AsyncTriggerExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\MonoBehaviourMessagesTriggers.cs.meta">
+      <Link>UniTask\Runtime\Triggers\MonoBehaviourMessagesTriggers.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\MonoBehaviourMessagesTriggers.tt">
+      <Link>UniTask\Runtime\Triggers\MonoBehaviourMessagesTriggers.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\Triggers\MonoBehaviourMessagesTriggers.tt.meta">
+      <Link>UniTask\Runtime\Triggers\MonoBehaviourMessagesTriggers.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.asmdef">
+      <Link>UniTask\Runtime\UniTask.asmdef</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.asmdef.meta">
+      <Link>UniTask\Runtime\UniTask.asmdef.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.AsValueTask.cs.meta">
+      <Link>UniTask\Runtime\UniTask.AsValueTask.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Bridge.cs.meta">
+      <Link>UniTask\Runtime\UniTask.Bridge.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.cs.meta">
+      <Link>UniTask\Runtime\UniTask.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Delay.cs.meta">
+      <Link>UniTask\Runtime\UniTask.Delay.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Factory.cs.meta">
+      <Link>UniTask\Runtime\UniTask.Factory.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Run.cs.meta">
+      <Link>UniTask\Runtime\UniTask.Run.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.Threading.cs.meta">
+      <Link>UniTask\Runtime\UniTask.Threading.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WaitUntil.cs.meta">
+      <Link>UniTask\Runtime\UniTask.WaitUntil.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAll.cs.meta">
+      <Link>UniTask\Runtime\UniTask.WhenAll.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAll.Generated.cs.meta">
+      <Link>UniTask\Runtime\UniTask.WhenAll.Generated.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAll.Generated.tt">
+      <Link>UniTask\Runtime\UniTask.WhenAll.Generated.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAll.Generated.tt.meta">
+      <Link>UniTask\Runtime\UniTask.WhenAll.Generated.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAny.cs.meta">
+      <Link>UniTask\Runtime\UniTask.WhenAny.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAny.Generated.cs.meta">
+      <Link>UniTask\Runtime\UniTask.WhenAny.Generated.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAny.Generated.tt">
+      <Link>UniTask\Runtime\UniTask.WhenAny.Generated.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTask.WhenAny.Generated.tt.meta">
+      <Link>UniTask\Runtime\UniTask.WhenAny.Generated.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskCompletionSource.cs.meta">
+      <Link>UniTask\Runtime\UniTaskCompletionSource.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskExtensions.cs.meta">
+      <Link>UniTask\Runtime\UniTaskExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskExtensions.Shorthand.cs.meta">
+      <Link>UniTask\Runtime\UniTaskExtensions.Shorthand.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskExtensions.Shorthand.tt">
+      <Link>UniTask\Runtime\UniTaskExtensions.Shorthand.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskExtensions.Shorthand.tt.meta">
+      <Link>UniTask\Runtime\UniTaskExtensions.Shorthand.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskObservableExtensions.cs.meta">
+      <Link>UniTask\Runtime\UniTaskObservableExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskScheduler.cs.meta">
+      <Link>UniTask\Runtime\UniTaskScheduler.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskSynchronizationContext.cs.meta">
+      <Link>UniTask\Runtime\UniTaskSynchronizationContext.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UniTaskVoid.cs.meta">
+      <Link>UniTask\Runtime\UniTaskVoid.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.AssetBundleRequestAllAssets.cs.meta">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.AssetBundleRequestAllAssets.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.AsyncGPUReadback.cs.meta">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.AsyncGPUReadback.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.cs.meta">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.Jobs.cs.meta">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.Jobs.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.MonoBehaviour.cs.meta">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.MonoBehaviour.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.tt">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.tt</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.tt.meta">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.tt.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAsyncExtensions.uGUI.cs.meta">
+      <Link>UniTask\Runtime\UnityAsyncExtensions.uGUI.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityAwaitableExtensions.cs.meta">
+      <Link>UniTask\Runtime\UnityAwaitableExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityBindingExtensions.cs.meta">
+      <Link>UniTask\Runtime\UnityBindingExtensions.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\UnityWebRequestException.cs.meta">
+      <Link>UniTask\Runtime\UnityWebRequestException.cs.meta</Link>
+    </Content>
+    <Content Include="..\UniTask\src\UniTask\Assets\Plugins\UniTask\Runtime\_InternalVisibleTo.cs.meta">
+      <Link>UniTask\Runtime\_InternalVisibleTo.cs.meta</Link>
+    </Content>
+  </ItemGroup>
+</Project>

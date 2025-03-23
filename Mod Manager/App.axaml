@@ -1,0 +1,27 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Mod_Manager"
+             x:Class="Mod_Manager.App"
+             RequestedThemeVariant="Dark"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+    
+    <Application.Resources>
+        <Color x:Key="Vtolml Dark">#3d3d3d</Color>
+        <Color x:Key="Vtolml Light">#4b4b4b</Color>
+        
+        <Color x:Key="Danger">#dc3545</Color>
+        <Color x:Key="Danger Dark">#7a2730</Color>
+        <Color x:Key="Success">#28a745</Color>
+        <Color x:Key="Success Dark">#41784E</Color>
+        <Color x:Key="Warning">#ffc107</Color>
+        <Color x:Key="Dark">#343a40</Color>
+    </Application.Resources>
+
+    <Application.Styles>
+        <FluentTheme/>
+        <materialIcons:MaterialIconStyles />
+    </Application.Styles>
+</Application>

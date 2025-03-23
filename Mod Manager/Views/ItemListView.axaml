@@ -1,0 +1,91 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Mod_Manager.ViewModels"
+             xmlns:materialIcon="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="620" d:DesignHeight="64"
+             x:Class="Mod_Manager.Views.ItemListView">
+    
+    <Design.DataContext>
+        <viewModels:ItemListViewModel/>
+    </Design.DataContext>
+    
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/CommonStyles.axaml"/>
+    </UserControl.Styles>
+    
+    <Grid
+        ColumnDefinitions="96,*,100"
+        Margin="50,5">
+        
+        <Image
+            Grid.Column="0"
+            Height="54"
+            Width="96"
+            Source="{Binding Image}"/>
+        
+        <StackPanel
+            Grid.Column="1"
+            Margin="5,0,0,0">
+            
+            <TextBlock
+                Text="{Binding Name}"/>
+            
+            <StackPanel
+                Orientation="Horizontal">
+                <materialIcon:MaterialIcon Kind="Download"/>
+                <TextBlock
+                    Text="{Binding DownloadCount}"/>
+                
+                <materialIcon:MaterialIcon Kind="Account"/>
+                <TextBlock
+                    Text="{Binding Author}"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel
+            Grid.Column="2"
+            Orientation="Horizontal"
+            Spacing="5"
+            HorizontalAlignment="Right">
+            
+            <Button
+                Command="{Binding OpenInSteam}"
+                ToolTip.Tip="Open in Steam"
+                ToolTip.ShowDelay="0">
+                <materialIcon:MaterialIcon Kind="Steam"/>
+            </Button>
+            
+            <Button
+                Classes.bg-success="{Binding LosEnabled}"
+                Command="{Binding ToggleLoadOnStart}"
+                ToolTip.Tip="{Binding LosToolTip}"
+                ToolTip.ShowDelay="0"
+                IsEnabled="{Binding LosAllowed}">
+                <materialIcon:MaterialIcon Kind="{Binding LosIcon}"/>
+            </Button>
+        </StackPanel>
+        
+        
+        
+    </Grid>
+    
+    <!--<Button
+        HorizontalAlignment="Stretch"
+        Margin="50,5"
+        Command="{Binding OpenItem}">
+        <StackPanel 
+            Orientation="Horizontal"
+            Spacing="10">
+            <Image
+                Height="54"
+                Width="96"
+                Source="{Binding Image}"/>
+                    
+            <TextBlock
+                Text="{Binding Name}"
+                VerticalAlignment="Center"/>
+        </StackPanel>
+    </Button>-->
+</UserControl>

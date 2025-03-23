@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f945b6b9257b14549bdeab3606da5cf4, type: 3}
+  m_Name: BundleBuildMap
+  m_EditorClassIdentifier: 
+  sourceName: 
+  providerName: 
+  allowCustomBuild: 0
+  customBuildMaps: []
+  enableBundleSync: 0
+  bundleSyncMaps: []
+  _dictBuildBundleInfo:
+    list:
+    - Key: Assets/@Mod Loader/mod_loader_version.txt
+      Value:
+        assetPath: Assets/@Mod Loader/mod_loader_version.txt
+        assetBundleName: assets
+        assetBundleVariant: 
+    - Key: Assets/@Mod Loader/SplashScene/Modded Warning Text.prefab
+      Value:
+        assetPath: Assets/@Mod Loader/SplashScene/Modded Warning Text.prefab
+        assetBundleName: assets
+        assetBundleVariant: 
+    - Key: Assets/@Mod Loader/SamplerScene/Disable Mod Loader Button.prefab
+      Value:
+        assetPath: Assets/@Mod Loader/SamplerScene/Disable Mod Loader Button.prefab
+        assetBundleName: assets
+        assetBundleVariant: 
+    - Key: Assets/@Mod Loader/ReadyRoom/ReadyRoom_ModsButton.prefab
+      Value:
+        assetPath: Assets/@Mod Loader/ReadyRoom/ReadyRoom_ModsButton.prefab
+        assetBundleName: assets
+        assetBundleVariant: 
+    - Key: Assets/@Mod Loader/ReadyRoom/Mods List.prefab
+      Value:
+        assetPath: Assets/@Mod Loader/ReadyRoom/Mods List.prefab
+        assetBundleName: assets
+        assetBundleVariant: 
+    - Key: Assets/@Mod Loader/ReadyRoom/Mod Item Template.prefab
+      Value:
+        assetPath: Assets/@Mod Loader/ReadyRoom/Mod Item Template.prefab
+        assetBundleName: assets
+        assetBundleVariant: 
+    - Key: Assets/@Mod Loader/ReadyRoom/No Settings Text.prefab
+      Value:
+        assetPath: Assets/@Mod Loader/ReadyRoom/No Settings Text.prefab
+        assetBundleName: assets
+        assetBundleVariant: 
+    - Key: Assets/@Mod Loader/ReadyRoom/Settings List.prefab
+      Value:
+        assetPath: Assets/@Mod Loader/ReadyRoom/Settings List.prefab
+        assetBundleName: assets
+        assetBundleVariant: 
+    keyCollision: 0

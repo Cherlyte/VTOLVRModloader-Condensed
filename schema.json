@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "item.json",
+  "description": "Schema for item.json in the VTOL VR Mod Loader",
+  "type": "object",
+  "properties": {
+    "Title": {
+      "required": true,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Title of your mod, only to be shown to you when locally developing"
+    },
+    "Description": {
+      "required": true,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Description of your mod, only to be shown to you when locally developing"
+    },
+    "Tags": {
+      "required": false,
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "description": "Workshop tags, this isn't used anywhere so no need to set it"
+    },
+    "PreviewImageUrl": {
+      "required": false,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The URL for what thumbnail is shown in game and in the mod loader. Only visible to you when locally developing"
+    },
+    "NumSubscriptions": {
+      "required": false,
+      "type": "integer",
+      "description": "Number of subscribers on the workshop"
+    },
+    "Owner": {
+      "required": false,
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Name": {
+          "required": false,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "SteamId": {
+          "required": false,
+          "type": "integer"
+        }
+      },
+      "description": "Owner steam id"
+    },
+    "PublishFieldId": {
+      "required": false,
+      "type": "integer",
+      "description": "The ID for the workshop item, useful if other local mods depend on your local mod"
+    },
+    "MetaData": {
+      "required": true,
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Metadata stored on each workshop item to help the mod loader",
+      "properties": {
+        "DllName": {
+          "required": true,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The name of the dll including .dll. EG: 'MyMod.dll'"
+        },
+        "AllowLoadOnStart": {
+          "required": true,
+          "type": "boolean",
+          "description": "If you are allowed to enable load on start in the mod loader"
+        },
+        "ShowOnMainList": {
+          "required": true,
+          "type": "boolean",
+          "description": "If your mod should show in the in game menu"
+        },
+        "DllHash": {
+          "required": false,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Directory": {
+      "required": false,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Where this mod is on your disk"
+    },
+    "DependenciesIds": {
+      "required": false,
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "integer"
+      },
+      "description": "The steam IDs of the mods that your mod depends on"
+    },
+    "IsInstalled": {
+      "required": false,
+      "type": "boolean",
+      "description": "If it is installed currently (On Steam subscribed items can sometimes not be installed yet)"
+    }
+  }
+}

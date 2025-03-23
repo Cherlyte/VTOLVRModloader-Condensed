@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mod Loader", "ModLoader\Mod Loader.csproj", "{6954C277-7D91-4274-B54B-FDDAD7738790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "Builder\Builder.csproj", "{D65B2E1B-93D1-4839-8517-8538978C07F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC89113C-1D0D-4461-8AC5-63C3B2868C9A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		.gitmodules = .gitmodules
+		build_v6_modloader.ps1 = build_v6_modloader.ps1
+		README.md = README.md
+		schema.json = schema.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mod Manager", "Mod Manager\Mod Manager.csproj", "{77F54F9D-7187-4BDA-8742-2C2533EE9672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamQueries.Models", "SteamQueries.Models\SteamQueries.Models.csproj", "{D9B2E875-782C-4730-993F-BB1BA7179D5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSubTypes", "JsonSubTypes\JsonSubTypes\JsonSubTypes.csproj", "{2D6326C3-144F-4A3B-8B9A-0E7713EC8E23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mod Loader.Framework", "Mod Loader.Framework\Mod Loader.Framework.csproj", "{404B081E-3CBC-477C-B200-0AAA4B618298}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6954C277-7D91-4274-B54B-FDDAD7738790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6954C277-7D91-4274-B54B-FDDAD7738790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6954C277-7D91-4274-B54B-FDDAD7738790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6954C277-7D91-4274-B54B-FDDAD7738790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D65B2E1B-93D1-4839-8517-8538978C07F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65B2E1B-93D1-4839-8517-8538978C07F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D65B2E1B-93D1-4839-8517-8538978C07F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D65B2E1B-93D1-4839-8517-8538978C07F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77F54F9D-7187-4BDA-8742-2C2533EE9672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77F54F9D-7187-4BDA-8742-2C2533EE9672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77F54F9D-7187-4BDA-8742-2C2533EE9672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77F54F9D-7187-4BDA-8742-2C2533EE9672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9B2E875-782C-4730-993F-BB1BA7179D5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9B2E875-782C-4730-993F-BB1BA7179D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9B2E875-782C-4730-993F-BB1BA7179D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9B2E875-782C-4730-993F-BB1BA7179D5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D6326C3-144F-4A3B-8B9A-0E7713EC8E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6326C3-144F-4A3B-8B9A-0E7713EC8E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6326C3-144F-4A3B-8B9A-0E7713EC8E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6326C3-144F-4A3B-8B9A-0E7713EC8E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404B081E-3CBC-477C-B200-0AAA4B618298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404B081E-3CBC-477C-B200-0AAA4B618298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404B081E-3CBC-477C-B200-0AAA4B618298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404B081E-3CBC-477C-B200-0AAA4B618298}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8C92F2A-8D42-4CD3-8DF9-49B06621ABC6}
+	EndGlobalSection
+EndGlobal

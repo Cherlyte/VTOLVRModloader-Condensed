@@ -1,0 +1,37 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Mod_Manager.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        d:DesignWidth="620" 
+        d:DesignHeight="854"
+        MinWidth="620"
+        Width="620"
+        Height="854"
+        x:Class="Mod_Manager.Views.MainWindow"
+        Icon="/Assets/Logo.ico"
+        Title="VTOL VR Mod Loader">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid 
+        RowDefinitions="80,*">
+        
+        <UserControl
+            Grid.Row="0"
+            Content="{Binding HeaderBarView}"/>
+        
+        <UserControl 
+            Grid.Row="1"
+            Content="{Binding MainView}"/>
+        
+        <UserControl
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Content="{Binding PopUpView}"/>
+    </Grid>
+
+</Window>

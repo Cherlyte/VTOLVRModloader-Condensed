@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <LangVersion>11</LangVersion>
+        <IsTrimmable>false</IsTrimmable>
+        <NoWarn>SYSLIB0050</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="coverlet.msbuild" Version="3.1.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+        <PackageReference Include="xunit" Version="2.4.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector" Version="3.1.0">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="TestResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>TestResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="DeliberatelyIncorrectTestResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>DeliberatelyIncorrectTestResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="TestResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>TestResources.resx</DependentUpon>
+      </Compile>
+      <Compile Update="TestResources.Designer.cs">
+        <AutoGen>True</AutoGen>
+        <DependentUpon>TestResources.resx</DependentUpon>
+        <DesignTime>True</DesignTime>
+      </Compile>
+      <Compile Update="DeliberatelyIncorrectTestResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>DeliberatelyIncorrectTestResources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Tomlet\Tomlet.csproj" />
+    </ItemGroup>
+
+</Project>

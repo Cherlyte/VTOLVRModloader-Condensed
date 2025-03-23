@@ -1,0 +1,227 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+     <Design.PreviewWith>
+        <StackPanel Margin="20" Spacing="20">
+            <Button
+                Content="Success Background"
+                Classes="bg-success"/>
+            <Button
+                Content="Warning Background"
+                Classes="bg-warning"/>
+            <Button
+                Content="Danger Background"
+                Classes="bg-danger"/>
+            <Button
+                Content="Dark Background"
+                Classes="bg-dark"/>
+            <Button
+                Content="No Background Button"
+                Classes="bg-transparent"/>
+            <Button
+                Content="Success Foreground"
+                Classes="fg-success"/>
+            <Button
+                Content="Dark Background with Mouse Over"
+                Classes="bg-dark mo-success"/>
+            <Button
+                Content="Two classes Button"
+                Classes="fg-success bg-danger"/>
+            <Button
+                Content="Rounded Button"
+                Classes="bt-rounded-10"/>
+            <Button
+                Content="VTOL Mod Loader Dark Background"
+                Classes="bg-vtolml-dark"/>
+            <Button
+                Content="VTOL Mod Loader Light Background"
+                Classes="bg-vtolml-light"/>
+            <Button
+                Content="VTOL Mod Loader Dark Foreground"
+                Classes="fg-vtolml-dark"/>
+            <Button
+                Content="VTOL Mod Loader Light Foreground"
+                Classes="fg-vtolml-light"/>
+            <Grid
+                Classes="bg-vtolml-dark"
+                Height="40">
+                <TextBlock Text="Grid with VTOL Mod Loader Dark background"/>
+            </Grid>
+            <TextBlock
+                Text="Header One"
+                Classes="h1"/>
+            <Border
+                Height="40"
+                Width="300"
+                Classes="rounded-10"
+                Background="white"/>
+            
+            <TextBlock
+                Text="Header Two"
+                Classes="h2"/>
+            
+            <TextBlock
+                Text="Header Three"
+                Classes="h3"/>
+            
+            <TextBlock
+                Text="Underlined"
+                Classes="u"/>
+            <TextBlock
+                Text="Bold"
+                Classes="b"/>
+            <TextBlock
+                Text="Italic"
+                Classes="i"/>
+            <TextBlock
+                Text="Strikethrough"
+                Classes="strike"/>
+            
+            <StackPanel 
+                Background="Green">
+                <TextBlock
+                    Margin="5"
+                    Text="Spoiler Text"
+                    Classes="spoiler"/>
+            </StackPanel>
+            
+            <Grid
+                ColumnDefinitions="*">
+                <Border
+                    Grid.Column="0"
+                    Classes="hr"
+                    Height="10"/>
+            </Grid>
+            
+        </StackPanel>
+    </Design.PreviewWith>
+    
+    <Style Selector="Button.bg-success, Border.bg-success">
+        <Setter Property="Button.Background" Value="{DynamicResource Success}"/>
+    </Style>
+    <Style Selector="Button.bg-warning">
+        <Setter Property="Background" Value="{DynamicResource Warning}"/>
+    </Style>
+    <Style Selector="Button.bg-danger">
+        <Setter Property="Background" Value="{DynamicResource Danger}"/>
+    </Style>
+    <Style Selector="Button.bg-dark">
+        <Setter Property="Background" Value="{DynamicResource Dark}"/>
+    </Style>
+    <Style Selector="Button.bg-vtolml-dark, Grid.bg-vtolml-dark, Border.bg-vtolml-dark, Panel.bg-vtolml-dark">
+        <Setter Property="Button.Background" Value="{DynamicResource 'Vtolml Dark'}"/>
+    </Style>
+    <Style Selector="Button.bg-vtolml-light, Grid.bg-vtolml-light">
+        <Setter Property="Button.Background" Value="{DynamicResource 'Vtolml Light'}"/>
+    </Style>
+    <Style Selector="Rectangle.bg-vtolml-dark">
+        <Setter Property="Fill" Value="{DynamicResource 'Vtolml Dark'}"/>
+    </Style>
+    <Style Selector="Rectangle.bg-vtolml-light">
+        <Setter Property="Fill" Value="{DynamicResource 'Vtolml Light'}"/>
+    </Style>
+    <Style Selector="Button.bg-transparent">
+        <Setter Property="Button.Background" Value="Transparent"/>
+    </Style>
+    
+    <Style Selector="Button.fg-success">
+        <Setter Property="Foreground" Value="{DynamicResource Success}"/>
+    </Style>
+    <Style Selector="Button.fg-warning">
+        <Setter Property="Foreground" Value="{DynamicResource Warning}"/>
+    </Style>
+    <Style Selector="Button.fg-danger">
+        <Setter Property="Foreground" Value="{DynamicResource Danger}"/>
+    </Style>
+    <Style Selector="Button.fg-dark">
+        <Setter Property="Foreground" Value="{DynamicResource Dark}"/>
+    </Style>
+    <Style Selector="Button.fg-vtolml-dark, TextBlock.fg-vtolml-dark">
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource 'Vtolml Dark'}"/>
+    </Style>
+    <Style Selector="Button.fg-vtolml-light, TextBlock.fg-vtolml-light">
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource 'Vtolml Light'}"/>
+    </Style>
+    
+    
+    <Style Selector="Button.bt-rounded-10, Border.rounded-10">
+        <Setter Property="Button.CornerRadius" Value="10"/>
+    </Style>
+    <Style Selector="Button.bt-standard">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    
+    
+    <Style Selector="Button.mo-success:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource Success}"/>
+    </Style>
+    
+    <Style Selector="Button.mo-success-dark:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource 'Success Dark'}"/>
+    </Style>
+    
+    <Style Selector="Button.mo-danger:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource Danger}"/>
+    </Style>
+    
+    <Style Selector="Button.mo-danger-dark:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource 'Danger Dark'}"/>
+    </Style>
+    
+    <Style Selector="Button.mo-vtolml-light:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource 'Vtolml Light'}"/>
+    </Style>
+
+    
+    
+    <Style Selector="TextBlock.h1">
+        <Setter Property="FontSize" Value="40"/>
+    </Style>
+    
+    <Style Selector="TextBlock.h2">
+        <Setter Property="FontSize" Value="30"/>
+    </Style>
+    
+    <Style Selector="TextBlock.h3">
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+    
+    <Style Selector="TextBlock.p-lr-10">
+        <Setter Property="Padding" Value="10,0,10,0"/>
+    </Style>
+    
+    <Style Selector="TextBlock.u">
+        <Setter Property="TextDecorations" Value="Underline"/>
+    </Style>
+    
+    <Style Selector="TextBlock.b">
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
+    <Style Selector="TextBlock.i">
+        <Setter Property="FontStyle" Value="Italic"/>
+    </Style>
+    
+    <Style Selector="TextBlock.strike">
+        <Setter Property="TextDecorations" Value="Strikethrough"/>
+    </Style>
+    
+    <Style Selector="TextBlock.spoiler">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="Black"/>
+    </Style>
+    
+    <Style Selector="TextBlock.spoiler:pointerover">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
+    <Style Selector="Border.hr">
+        <Setter Property="Background" Value="{DynamicResource 'Vtolml Dark'}"/>
+        <Setter Property="CornerRadius" Value="200"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+    
+</Styles>

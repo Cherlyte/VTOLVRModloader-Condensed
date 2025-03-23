@@ -1,0 +1,24 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Mod_Manager.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="620" d:DesignHeight="450"
+             x:Class="Mod_Manager.Views.HomeView">
+    <Design.DataContext>
+        <viewModels:HomeViewModel/>
+    </Design.DataContext>
+    
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/CommonStyles.axaml"/>
+    </UserControl.Styles>
+    
+    <ScrollViewer
+        VerticalScrollBarVisibility="Auto"
+        Background="{StaticResource 'Vtolml Light'}">
+        <ItemsControl
+            Margin="10,0"
+            ItemsSource="{Binding MyItems}">
+        </ItemsControl>
+    </ScrollViewer>
+</UserControl>

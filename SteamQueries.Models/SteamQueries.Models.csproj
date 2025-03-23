@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net7.0;net461</TargetFrameworks>
+    </PropertyGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\JsonSubTypes\JsonSubTypes\JsonSubTypes.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Valve.Newtonsoft.Json" Condition="'$(TargetFramework)' == 'net461'">
+        <HintPath>..\dll\Valve.Newtonsoft.Json.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+</Project>
