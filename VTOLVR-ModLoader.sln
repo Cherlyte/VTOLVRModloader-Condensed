@@ -5,8 +5,6 @@ VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mod Loader", "ModLoader\Mod Loader.csproj", "{6954C277-7D91-4274-B54B-FDDAD7738790}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "Builder\Builder.csproj", "{D65B2E1B-93D1-4839-8517-8538978C07F2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC89113C-1D0D-4461-8AC5-63C3B2868C9A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -35,10 +33,6 @@ Global
 		{6954C277-7D91-4274-B54B-FDDAD7738790}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6954C277-7D91-4274-B54B-FDDAD7738790}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6954C277-7D91-4274-B54B-FDDAD7738790}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D65B2E1B-93D1-4839-8517-8538978C07F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D65B2E1B-93D1-4839-8517-8538978C07F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D65B2E1B-93D1-4839-8517-8538978C07F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D65B2E1B-93D1-4839-8517-8538978C07F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{77F54F9D-7187-4BDA-8742-2C2533EE9672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{77F54F9D-7187-4BDA-8742-2C2533EE9672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77F54F9D-7187-4BDA-8742-2C2533EE9672}.Release|Any CPU.ActiveCfg = Release|Any CPU
