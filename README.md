@@ -5,7 +5,7 @@ This is a fork of the [VTOL VR Modloader](https://gitlab.com/vtolvr-mods/ModLoad
 It also includes a few QoL things i found nice, such as the Play button in the manager starting VTOLVR through its executable, and a new "Enable by Default" option that loads the modloader with the game without the need for special launch arguments or the manager.
 
 ## Creating Mods
-You can find more information about how to create mods for the ModLoader in here.
+You can find more information about how to create mods for the ModLoader in [here.](https://vtolvr-mods.com/docs/creating-a-mod/setup/)
 
 ## Building your own ModLoader
 The ModLoader incorporates a very janky use of .NET 6.0, 7.0, 8.0 and Framework 4.6/Standard 2.0, they are required for building the ModLoader<br>
